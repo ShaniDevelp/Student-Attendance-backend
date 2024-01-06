@@ -7,6 +7,12 @@ const leaveSchema = new mongoose.Schema({
     ref: 'Student', 
     required: true 
   },
+
+  studentName: { 
+    type : String,
+    required: true 
+  },
+  
   startDate: { 
     type: Date, 
     required: true 
@@ -19,6 +25,10 @@ const leaveSchema = new mongoose.Schema({
     type: Boolean, 
     default: false 
   },
+  Rejected: {
+    type: Boolean,
+    default: false
+  }
   
 });
 

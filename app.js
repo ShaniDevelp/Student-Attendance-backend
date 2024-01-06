@@ -3,7 +3,7 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
-
+const cors = require('cors');
 var indexRouter = require('./routes/index');
 const studentRouter = require('./routes/studentRoutes');
 const adminRouter = require('./routes/adminRoutes');
@@ -15,18 +15,23 @@ const mongoose = require('mongoose');
 
 // DB Connection
 mongoose.set('strictQuery', false);
-const db = 'mongodb+srv://Admin:4tXywV6DNVGfI6HQ@cluster0.ilwkopa.mongodb.net/Student_Attendance?retryWrites=true&w=majority'
+const db = 'mongodb+srv://reactblog:NLizTY7aQH7cJjO0@cluster0.7na1v62.mongodb.net/Student_Attendance?retryWrites=true&w=majority'
+
 main().catch((err) => console.log(err));
 async function main() {
   await mongoose.connect(db)
   console.log('database connected')
 }
 
+// NLizTY7aQH7cJjO0
+
+// mongodb+srv://reactblog:NLizTY7aQH7cJjO0@cluster0.7na1v62.mongodb.net/Student_Attendance?retryWrites=true&w=majority
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
-
+// Use CORS middleware
+app.use(cors());
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
